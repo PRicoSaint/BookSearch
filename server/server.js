@@ -5,7 +5,7 @@ const db = require('./config/connection');
 const { typeDefs, resolvers } = require('./schemas');
 // const routes = require('./routes');
 
-const app = express();
+// const app = express();
 const PORT = process.env.PORT || 3001;
 
 async function startApolloServer() {
@@ -14,7 +14,7 @@ async function startApolloServer() {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    context: authMiddleware,
+    // context: authMiddleware,
   });
 
 await server.start();

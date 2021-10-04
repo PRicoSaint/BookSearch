@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
 
 // import { getMe, deleteBook } from '../utils/API';
@@ -9,8 +9,10 @@ import { REMOVE_BOOK } from '../utils/mutations';
 import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
-  const { userData, setUserData } = useQuery(GET_ME);
-  // const [userData, setUserData] = useState({});
+  const { userData } = useQuery(GET_ME);
+  const [deleteBook, { error }] = useMutation(REMOVE_BOOK);
+  const [userState, setUserData] = useState({});
+  setUserData(userData);
 
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
@@ -47,7 +49,6 @@ const SavedBooks = () => {
     if (!token) {
       return false;
     }
-    const [deleteBook, { error }] = useMutation(REMOVE_BOOK);
 
 
     try {
