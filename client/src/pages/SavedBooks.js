@@ -9,13 +9,14 @@ import { REMOVE_BOOK } from '../utils/mutations';
 import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
-  const { data } = useQuery(GET_ME);
+  const { loading, data } = useQuery(GET_ME);
   const [deleteBook, { error }] = useMutation(REMOVE_BOOK);
   const [userState, setData] = useState({});
-  setData(data);
+  const userData = data?.me || [];
+
 
   // use this to determine if `useEffect()` hook needs to run again
-  const dataLength = Object.keys(data).length;
+  const dataLength = Object.keys(userData).length;
 
   // useEffect(() => {
   //   const getdata = async () => {
@@ -81,12 +82,12 @@ const SavedBooks = () => {
       </Jumbotron>
       <Container>
         <h2>
-          {data.savedBooks.length
-            ? `Viewing ${data.savedBooks.length} saved ${data.savedBooks.length === 1 ? 'book' : 'books'}:`
+          {userData.savedBooks.length
+            ? `Viewing ${userData.savedBooks.length} saved ${userData.savedBooks.length === 1 ? 'book' : 'books'}:`
             : 'You have no saved books!'}
         </h2>
         <CardColumns>
-          {data.savedBooks.map((book) => {
+          {userData.savedBooks.map((book) => {
             return (
               <Card key={book.bookId} border='dark'>
                 {book.image ? <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' /> : null}
