@@ -37,9 +37,7 @@ import Navbar from './components/Navbar';
 //   cache: new InMemoryCache(),
 // });
 
-const httpLink = new HttpLink({
-  uri: "http://localhost:3001/graphql"
-});
+const httpLink = new HttpLink({});
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)

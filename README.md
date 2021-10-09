@@ -50,11 +50,11 @@
   Github Repository: https://github.com/PRicoSaint/BookSearch
 
   Deployed Site here: 
-  
+  https://morning-brushlands-17969.herokuapp.com/
 
   Screenshot:
   
-<!-- ![BookSearch](./assets/images/BookSearch.gif) -->
+<!-- ![BookSearch](BookSearch.gif) -->
 Screenshot will be found here
 
   
