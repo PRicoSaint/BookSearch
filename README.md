@@ -54,7 +54,7 @@
 
   Screenshot:
   
-<!-- ![BookSearch](BookSearch.gif) -->
+![BookSearch](BookSearch.gif)
 Screenshot will be found here
 
   
