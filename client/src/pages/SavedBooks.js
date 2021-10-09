@@ -9,7 +9,7 @@ import { REMOVE_BOOK } from '../utils/mutations';
 import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
-  document.location.reload();
+  
   const tokenn = Auth.loggedIn() ? Auth.getToken() : null;
   console.log(tokenn);
   const decodedToken = Auth.getProfile(tokenn).data._id;
