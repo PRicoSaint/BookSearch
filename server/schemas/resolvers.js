@@ -51,11 +51,12 @@ const resolvers = {
       }
       throw new AuthenticationError("Book not saved! Something broke along the way!");
     },
-    removeBook: async (parent, { user, params }, context) => {
-      if (context.user) {  
+    removeBook: async (parent, args, context) => {
+      console.log(args);
+      if (args._id) {  
       return await User.findOneAndUpdate(
-        { _id: context.user._id },
-        { $pull: { savedBooks: { bookId: params.bookId } } },
+        { _id: args._id },
+        { $pull: { savedBooks: { bookId: args.bookId } } },
         { new: true }
       );
     }

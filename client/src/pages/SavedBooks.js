@@ -9,6 +9,7 @@ import { REMOVE_BOOK } from '../utils/mutations';
 import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
+  document.location.reload();
   const tokenn = Auth.loggedIn() ? Auth.getToken() : null;
   console.log(tokenn);
   const decodedToken = Auth.getProfile(tokenn).data._id;
@@ -32,15 +33,17 @@ const SavedBooks = () => {
     if (!token) {
       return false;
     }
-
+    const decodedToken = Auth.getProfile(token).data._id;
 
     try {
       const response = await deleteBook({
-        variables: { bookId: bookId },
+        variables: { bookId: bookId,
+          _id: decodedToken
+        },
       });
 
-      const updatedUser = await response.json();
-      setData(updatedUser);
+      // const updatedUser = await response.json();
+      // setData(updatedUser);
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
     } catch (err) {
